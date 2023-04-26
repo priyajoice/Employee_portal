@@ -1,0 +1,106 @@
+{% block content %}
+{% include "header.html" %}
+
+<!--<div class="employee_form">-->
+<!--<form action='' method = "POST">-->
+<!--  <p>First Name <input type = "text" name = "first_name" placeholder="First Name" required></p>-->
+<!--  <p>Last Name <input type = "text" name = "last_name" placeholder="Last Name" required></p>-->
+<!--  <p>Email <input type = "text" name = "email" placeholder="Email ID" required></p>-->
+<!--  <p>Mobile Number <input type = "text" name = "mobile_number" placeholder="Mobile No" required></p>-->
+<!--  <p>Date Of Birth <input type="date" id="DOB" name="DOB" min="01-01-1970" max="01-01-2023"></p>-->
+<!--  <p>Gender: <input type="radio" id="male" name="gender" value="Male"><label for="male">Male</label>-->
+<!--    <input type="radio" id="female" name="gender" value="Female"><label for="female">Female</label>-->
+<!--  </p>-->
+<!--  <p><label>Address</label><br>-->
+<!--  <textarea rows="4" cols="50" name="address">Address</textarea></p>-->
+
+<!--  <p>Location-->
+<!--    <select name="location">-->
+<!--    <option>&#45;&#45;Select Country&#45;&#45;</option>-->
+<!--    <option value="Bangladesh">Bangladesh</option>-->
+<!--    <option value="Canada">Canada</option>-->
+<!--    <option value="China">China</option>-->
+<!--    <option value="France">France</option>-->
+<!--    <option value="India">India</option>-->
+<!--    <option value="Japan">Japan</option>-->
+<!--    <option value="Nepal">Nepal</option>-->
+<!--    <option value="Sri Lanka">Sri Lanka</option>-->
+<!--    <option value="UK">UK</option>-->
+<!--    <option value="USA">USA</option>-->
+<!--  </select>-->
+<!--  </p>-->
+<!--  <p>Skills <input type="checkbox" id="skill1" name="skill1" value="AWS"><label for="skill1">AWS</label>-->
+<!--    <input type="checkbox" id="skill2" name="skill2" value="DevOps"><label for="skill2">DevOps</label>-->
+<!--    <input type="checkbox" id="skill3" name="skill3" value="Full Stack Developer"><label for="skill3">Full Stack Developer</label>-->
+<!--    <input type="checkbox" id="skill4" name="skill4" value="Middleware"><label for="skill4">Middleware</label>-->
+<!--    <input type="checkbox" id="skill5" name="skill5" value="QA-Automation"><label for="skill5">QA-Automation</label>-->
+<!--    <input type="checkbox" id="skill6" name="skill6" value="WebService"><label for="skill6">WebService</label>-->
+<!--  </p>-->
+
+<!--  <button type="submit" class="btn btn-success" onclick="">Save</button>-->
+<!--  <a href="{{ url_for('create_employee') }}" class="btn btn-danger">Cancel</a>-->
+<!--</form>-->
+
+<!--{% for msg in get_flashed_messages() %}-->
+<!--<p>{{ msg }}</p>-->
+<!--{% endfor %}-->
+
+<!--</div>-->
+<div class="employee_form">
+<form method="POST">
+  {{ form.csrf_token }}
+  <div class="row">
+  <div class="col-md-6 form-group">
+      {{ form.first_name.label(class="form-label") }}
+      {{ form.first_name(class="form-control", placeholder="First Name") }}
+  </div>
+  <div class="col-md-6 form-group">
+      {{ form.last_name.label(class="form-label") }}
+      {{ form.last_name(class="form-control", placeholder="Last Name") }}
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 form-group">
+      {{ form.email.label(class="form-label") }}
+      {{ form.email(class="form-control", placeholder="Email") }}
+  </div>
+  <div class="col-md-6 form-group">
+      {{ form.mobile_number.label(class="form-label") }}
+      {{ form.mobile_number(class="form-control", placeholder="Mobile No") }}
+  </div>
+  </div>
+  <div class="form-group" id="dob">
+      {{ form.date_of_birth.label(class="form-label") }}
+      {{ form.date_of_birth() }}
+  </div>
+  <div class="form-check form-check-inline">
+      {{ form.gender.label(class="form-check-label") }}
+      {{ form.gender(class="form-check-input") }}
+  </div>
+  <div class="form-group">
+      {{ form.address.label(class="form-label") }}<br>
+      {{ form.address(rows=3, cols=70, placeholder="  Address") }}
+  </div>
+  <div class="form-group">
+      {{ form.country.label(class="form-label") }}
+      {{ form.country(class="form-select") }}
+  </div>
+
+  <div class="form-check form-check-inline">
+      {{ form.skills.label(class="form-check-label") }}
+      {{ form.skills(class="form-check-input") }}
+  </div>
+  <div class="form-group text-center">
+      {{ form.save(class="btn btn-primary shadow") }}
+      <a href="{{ url_for('create_employee') }}" class="btn btn-danger">Cancel</a>
+  </div>
+
+</form>
+
+{% for msg in get_flashed_messages() %}
+<p>{{ msg }}</p>
+{% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="login">
+    <h1>JALA Academy</h1>
+    <br>
+    <h2>Login Credentials</h2>
+    <p>Email : training@jalaacademy.com</p>
+    <p>Password : jobprogram</p>
+    <p>Learn Everything on Real-Time Scenarios</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <form action="{{ url_for('login') }}"  class="box" method="post"> <h1>Sign In</h1>
+                        <input type="text" name="email" placeholder="Email or Mobile No" required> <br><br>
+                        <input type="password" name="password" placeholder="Password" required> <br><br>
+                        <input type="submit" name="" value="Sign In">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for msg in get_flashed_messages() %}
+      <p>{{ msg }}</p>
+    {% endfor %}
+    </div>
+</body>
+</html>
+

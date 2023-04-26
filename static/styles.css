@@ -1,0 +1,124 @@
+.login {
+    text-align: center;
+}
+.navbar {
+    padding: 10px;
+}
+.navbar .navbar-brand {
+    font-size: 26px;
+    color: white;
+    padding-left: 40px;
+}
+.navbar .navbar-nav{
+    padding-left: 75%;
+}
+
+.navbar .nav-item .nav-link{
+    color: white;
+    padding-left: 20px;
+}
+
+body {
+    margin: 0px;
+}
+
+.home {
+    text-align: center;
+    padding-top: 70px;
+}
+
+.box {
+    position: relative;
+    background: #C5C5C5;
+    padding: 20px;
+    margin: 50px;
+}
+
+.box1 {
+    position: relative;
+    background: #C5C5C5;
+    padding: 20px;
+    margin: 50px;
+}
+
+.box1 b{
+    background-color: yellow;
+}
+
+.employee_form {
+    padding-top: 20px;
+}
+
+.form-check-input {
+    list-style: none;
+    display: flex;
+    padding-top: 20px;
+}
+
+.form-check-input label{
+    margin-right: 30px;
+}
+
+.employee_form {
+    width: 70%;
+    margin-left : 15%
+}
+
+.form-group .btn{
+    margin-right: 100px !important;
+    padding: 10px 30px 10px 30px;
+}
+
+.form-group label{
+    margin-right: 30px;
+}
+
+#dob{
+    padding-top: 10px;
+}
+
+.fa {
+    font-size: 28px;
+}
+
+#search .btn{
+    margin-top: 30px;
+}
+
+.paging-nav {
+  text-align: right;
+  padding-top: 2px;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #91b9e6;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #187ed5;
+  font-weight: bold;
+}
+
+#employee_table {
+    width: 95%;
+    margin-left: 30px;
+    text-align: center;
+}
+.table-hover tbody tr:hover td {
+    background: #BDBDBD;
+}
+
+.search_form {
+    margin: 20px;
+}
+
+.page_number {
+    margin-right: 50px;
+}
+
