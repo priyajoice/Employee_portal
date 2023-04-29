@@ -117,42 +117,62 @@ def create_employee():
 
 
 @app.route("/search", methods=['GET', 'POST'])
-@app.route("/search/<int:page>", methods=['GET', 'POST'])
-def search_employee(page=1):
+def search_employee():
+    page = request.args.get('page', 1, type=int)
+
     employee_list = User.query
     form = SearchForm()
 
-    name = form.name.data
-    mobile_number = form.mobile_number.data
+    name = form.name.data or request.args.get('name')
+    mobile_number = form.mobile_number.data or request.args.get('mobile_number')
 
-    if name is not None or mobile_number is not None:
-        if name != "" and mobile_number == "":
-            emp_name = db.session.query(User).filter(or_(User.first_name == name,
-                                                         User.last_name == name))
-            if emp_name.all():
-                employee_list = emp_name
-            else:
-                return render_template("search_employee.html", form=form)
+    if name is None and mobile_number is None:
+        name = ""
+        mobile_number = ""
+    elif name is None:
+        name = ""
+    elif mobile_number is None:
+        mobile_number = ""
 
-        elif name == "" and mobile_number != "":
-            emp_mobile = db.session.query(User).filter(or_(User.mobile_number == mobile_number))
+    if name != "" or mobile_number != "":
+        if name is not None or mobile_number is not None:
 
-            if emp_mobile.all():
-                employee_list = emp_mobile
-            else:
-                return render_template("search_employee.html", form=form)
+            employee_list = db.session.query(User).filter(or_(User.first_name == name,
+                                                              User.last_name == name, User.mobile_number == mobile_number))
+            return render_template("search_employee.html", form=form,
+                                   employee_list=employee_list.paginate(page=page, per_page=5, error_out=False),
+                                   name=name, mobile_number=mobile_number)
 
-        elif name != "" and mobile_number != "":
-            emp_name_mobile = db.session.query(User).filter(and_(or_(User.first_name == name,
-                                                                     User.last_name == name),
-                                                                 User.mobile_number == mobile_number))
-            if emp_name_mobile.all():
-                employee_list = emp_name_mobile
-            else:
-                return render_template("search_employee.html", form=form)
+    # if name is not None or mobile_number is not None:
+    #     page = 1
+    #     if name != "" and mobile_number == "":
+    #         emp_name = db.session.query(User).filter(or_(User.first_name == name,
+    #                                                      User.last_name == name))
+    #         if emp_name.all():
+    #             employee_list = emp_name
+    #         else:
+    #             return render_template("search_employee.html", form=form)
+    #
+    #     elif name == "" and mobile_number != "":
+    #         emp_mobile = db.session.query(User).filter(or_(User.mobile_number == mobile_number))
+    #
+    #         if emp_mobile.all():
+    #             employee_list = emp_mobile
+    #         else:
+    #             return render_template("search_employee.html", form=form)
+    #
+    #     elif name != "" and mobile_number != "":
+    #         emp_name_mobile = db.session.query(User).filter(and_(or_(User.first_name == name,
+    #                                                                  User.last_name == name),
+    #                                                              User.mobile_number == mobile_number))
+    #         if emp_name_mobile.all():
+    #             employee_list = emp_name_mobile
+    #         else:
+    #             return render_template("search_employee.html", form=form)
 
     return render_template("search_employee.html", form=form,
-                           employee_list=employee_list.paginate(page=page, per_page=10, error_out=False))
+                           employee_list=employee_list.paginate(page=page, per_page=5, error_out=False), name=name,
+                           mobile_number=mobile_number)
 
 
 @app.route("/edit/<int:emp_id>", methods=['GET', 'POST'])

@@ -10,11 +10,11 @@
         <div class="row">
             <div class="col-md-3 form-group">
               {{ form.name.label(class="form-label") }}
-              {{ form.name(class="form-control", placeholder="Employee Name") }}
+              {{ form.name(class="form-control", placeholder="Employee Name", value=name)}}
             </div>
             <div class="col-md-3 form-group">
               {{ form.mobile_number.label(class="form-label") }}
-              {{ form.mobile_number(class="form-control", placeholder="Mobile No") }}
+              {{ form.mobile_number(class="form-control", placeholder="Mobile No", value=mobile_number) }}
             </div>
             <div class="col-md-4" id="search">
                 {{ form.search(class="btn btn-success shadow") }}
@@ -70,12 +70,11 @@
            </tbody>
         </table>
 
-
 <!--Pagination Link-->
 <div class="page_number">
 {% if employee_list %}
 <div class="text-right">
-    <a href="{{ url_for('search_employee', page=employee_list.prev_num) }}"
+    <a href="{{ url_for('search_employee', name=name, mobile_number=mobile_number, page=employee_list.prev_num) }}"
        class="btn btn-outline-dark
        {% if employee_list.page == 1 %}disabled{% endif %}">
         &laquo;
@@ -86,12 +85,12 @@
 {% if page_num %}
 <!-- Check for the active page and set the link to "Active"-->
             {% if employee_list.page == page_num %}
-            <a href="{{ url_for('search_employee', page=page_num) }}"
+            <a href="{{ url_for('search_employee', name=name, mobile_number=mobile_number, page=page_num) }}"
                class="btn btn-dark">
                 {{ page_num }}
             </a>
             {% else %}
-            <a href="{{ url_for('search_employee', page=page_num) }}"
+            <a href="{{ url_for('search_employee', name=name, mobile_number=mobile_number, page=page_num) }}"
                class="btn btn-outline-dark">
                 {{ page_num }}
             </a>
@@ -101,7 +100,7 @@
         {% endif %}
        {% endfor %}
 
-    <a href="{{ url_for('search_employee', page=employee_list.next_num) }}"
+    <a href="{{ url_for('search_employee', name=name, mobile_number=mobile_number, page=employee_list.next_num) }}"
        class="btn btn-outline-dark
        {% if employee_list.page == employee_list.pages %}disabled{% endif %}">
         &raquo;
@@ -115,7 +114,6 @@
 
 </div>
 </div>
-
 
 
 
