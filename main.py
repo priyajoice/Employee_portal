@@ -119,6 +119,7 @@ def create_employee():
 @app.route("/search", methods=['GET', 'POST'])
 def search_employee():
     page = request.args.get('page', 1, type=int)
+    per_page = 10
 
     employee_list = User.query
     form = SearchForm()
@@ -135,12 +136,21 @@ def search_employee():
         mobile_number = ""
 
     if name != "" or mobile_number != "":
+
         if name is not None or mobile_number is not None:
 
             employee_list = db.session.query(User).filter(or_(User.first_name == name,
-                                                              User.last_name == name, User.mobile_number == mobile_number))
+                                                              User.last_name == name,
+                                                              User.mobile_number == mobile_number))
+
+            if not employee_list.all():
+                return render_template("search_employee.html", form=form)
+
+            if page > employee_list.paginate(per_page=per_page, error_out=False).pages:
+                page = 1
+
             return render_template("search_employee.html", form=form,
-                                   employee_list=employee_list.paginate(page=page, per_page=5, error_out=False),
+                                   employee_list=employee_list.paginate(page=page, per_page=per_page, error_out=False),
                                    name=name, mobile_number=mobile_number)
 
     # if name is not None or mobile_number is not None:
@@ -171,7 +181,7 @@ def search_employee():
     #             return render_template("search_employee.html", form=form)
 
     return render_template("search_employee.html", form=form,
-                           employee_list=employee_list.paginate(page=page, per_page=5, error_out=False), name=name,
+                           employee_list=employee_list.paginate(per_page=per_page, error_out=False), name=name,
                            mobile_number=mobile_number)
 
 
