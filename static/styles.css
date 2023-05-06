@@ -1,24 +1,36 @@
 .login {
+    margin-top: 20px;
     text-align: center;
+}
+.l_detail{
+    padding-top: 8px;
 }
 .navbar {
     padding: 10px;
 }
+.darsha_logo img{
+    margin-left: 20px;
+    width: 15%;
+}
+
 .navbar .navbar-brand {
     font-size: 26px;
     color: white;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 .navbar .navbar-nav{
-    padding-left: 75%;
+    padding-left: 70%;
 }
 
 .navbar .nav-item .nav-link{
     color: white;
     padding-left: 20px;
 }
-
+#l_out{
+    padding-top: 5px;
+}
 body {
+    background: #E4E5E8;
     margin: 0px;
 }
 
@@ -26,25 +38,9 @@ body {
     text-align: center;
     padding-top: 70px;
 }
-
-.box {
-    position: relative;
-    background: #C5C5C5;
-    padding: 20px;
-    margin: 50px;
+.home p{
+    color: #868B8E;
 }
-
-.box1 {
-    position: relative;
-    background: #C5C5C5;
-    padding: 20px;
-    margin: 50px;
-}
-
-.box1 b{
-    background-color: yellow;
-}
-
 .employee_form {
     padding-top: 20px;
 }
@@ -76,13 +72,12 @@ body {
 #dob{
     padding-top: 10px;
 }
-
-.fa {
-    font-size: 28px;
+#icon {
+    font-size:28px;
 }
-
 #search .btn{
-    margin-top: 30px;
+    margin-top: 42px;
+    margin-left: 10px;
 }
 
 .paging-nav {
@@ -106,6 +101,7 @@ body {
 }
 
 #employee_table {
+    background: white;
     width: 95%;
     margin-left: 30px;
     text-align: center;
@@ -122,3 +118,191 @@ body {
     margin-right: 50px;
 }
 
+.login-box {
+    margin-top: 25px;
+    height: auto;
+    background: #1A2226;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ECF0F5;
+}
+
+.login-form {
+    margin-top: 25px;
+    text-align: left;
+}
+
+/*input[type=text] {
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
+}*/
+
+input[type=password] {
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    color: #ECF0F5;
+}
+
+.form-group {
+    margin-top: 10px;
+    outline: 0px;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #0DB8DE;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+}
+
+label {
+    margin-bottom: 0px;
+}
+.form-control{
+    margin-top: 10px;
+}
+.form-control-label {
+    font-size: 10px;
+    color: #6C6C6C;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-outline-primary {
+    border-color: #0DB8DE;
+    color: #0DB8DE;
+    border-radius: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btn-outline-primary:hover {
+    background-color: #0DB8DE;
+    right: 0px;
+}
+
+.login-btm {
+    float: left;
+}
+
+.login-button {
+    margin-left: 50px;
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+.login-text {
+    text-align: left;
+    padding-left: 0px;
+    color: #A2A4A4;
+}
+
+.loginbttm {
+    padding-top: 10px;
+}
+
+.inforide {
+  box-shadow: 1px 2px 8px 0px #f1f1f1;
+  background-color: white;
+  border-radius: 8px;
+  height: 125px;
+}
+.rideone img {
+  width: 70%;
+}
+
+.ridetwo img {
+  width: 60%;
+}
+
+.ridethree img {
+  width: 50%;
+}
+
+.rideone {
+  background-color: #6CC785;
+  padding-top: 35px;
+  border-radius: 8px 0px 0px 8px;
+  text-align: center;
+  height: 125px;
+  margin-left: 15px;
+}
+
+.ridetwo {
+  background-color: #9A75FE;
+  padding-top: 35px;
+  border-radius: 8px 0px 0px 8px;
+  text-align: center;
+  height: 125px;
+  margin-left: 15px;
+}
+
+.fontsty {
+  margin-right: -15px;
+}
+
+.fontsty h2{
+  color: #6E6E6E;
+  font-size: 25px;
+  margin-top: 10px;
+  text-align: center;
+  margin-right: 30px;
+}
+
+.fontsty h4{
+  color: #6E6E6E;
+  font-size: 25px;
+  margin-top: 40px;
+  text-align: center;
+  margin-right: 30px;
+}
+
+.content-wrapper {
+    margin-left: 350px;
+}
+
+#t_emp{
+    margin-left: 200px;
+}

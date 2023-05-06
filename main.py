@@ -5,16 +5,20 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, RadioField, TextAreaField, SubmitField, SelectMultipleField, SelectField
 from wtforms.widgets import CheckboxInput, ListWidget
 from wtforms.validators import DataRequired, Length
-from sqlalchemy import and_, or_
+from sqlalchemy import or_, func
+import psycopg2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my-secret-key'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
+username = "postgres"
+password = "priyajoice"
+dbname = "employee_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{username}:{password}@localhost:5432/{dbname}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-admin_data = {"training@jalaacademy.com": "jobprogram"}
+admin_data = {"admin@darshatechnology.com": "admin123"}
 
 
 # Configure Table
@@ -30,8 +34,9 @@ class User(db.Model):
     address = db.Column(db.String(50))
 
 
-# app.app_context().push()
-# db.create_all()
+app.app_context().push()
+db.create_all()
+
 
 class Form(FlaskForm):
     first_name = StringField("First Name", validators=[DataRequired()])
@@ -90,9 +95,10 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    return render_template('home.html')
+    total_emp = db.session.query(User).count()
+    return render_template('home.html', total_emp=total_emp)
 
 
 @app.route("/add-employee", methods=['GET', 'POST'])
@@ -139,12 +145,12 @@ def search_employee():
 
         if name is not None or mobile_number is not None:
 
-            employee_list = db.session.query(User).filter(or_(User.first_name == name,
-                                                              User.last_name == name,
+            employee_list = db.session.query(User).filter(or_(func.lower(User.first_name) == name.lower(),
+                                                              func.lower(User.last_name) == name.lower(),
                                                               User.mobile_number == mobile_number))
 
             if not employee_list.all():
-                return render_template("search_employee.html", form=form)
+                return render_template("search_employee.html", form=form, name=name, mobile_number=mobile_number)
 
             if page > employee_list.paginate(per_page=per_page, error_out=False).pages:
                 page = 1

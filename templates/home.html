@@ -3,18 +3,61 @@
 {% include "header.html" %}
 
 <div class="home">
-    <h1>Welcome to JALA Academy</h1>
-    <p>Do you want to Learn Selenium Automation completely with Practical Scenarios in 7 Days?</p>
-    <div class="box">
-        <p>You Learn Everything by doing projects if you are very serious to gat a software job in 60 days contact us :
-        <a href="https://jalaacademy.com/" target="_blank">http://jalatechnologies.com/contact-us.html</a></p>
-    </div>
-    <div class="box1">
-        <b> For working people can double the salery in 60 Days </b>
-    </div>
+    <h1>Darsha Employees Dashboard</h1>
+    <p>Complete Information of employees</p>
+
+    <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+
+      <!-- Icon Cards-->
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4"  id="t_emp">
+            <div class="inforide">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-4 rideone">
+                    <img src="{{ url_for('static', filename='images/darsha_logo.png') }}">
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                    <h4><b>Total Employees</b></h4>
+                    <h2>{{ total_emp }}</h2>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+            <div class="inforide">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                    <img src="{{ url_for('static', filename='images/darsha_logo.png') }}">
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                    <h4><a href="{{ url_for('create_employee') }}">Create Employee</a></h4>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+            <div class="inforide">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                    <img src="{{ url_for('static', filename='images/darsha_logo.png') }}">
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                    <h4><a href="{{ url_for('search_employee') }}">Search Employee</a></h4>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+  </div>
 </div>
-
-
+</div>
 
 
 {% endblock %}

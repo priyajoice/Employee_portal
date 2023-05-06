@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Magnus</title>
+    <title>Darsha</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,7 +11,11 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <a class="navbar-brand" href="{{ url_for('home') }}">Magnus</a>
+        <div class="darsha_logo">
+            <img src="{{ url_for('static', filename='images/darsha_logo.png') }}">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Darsha</a>
+        </div>
+
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -24,12 +28,12 @@
               Employee
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ url_for('create_employee') }}"><i class="fa fa-pencil-square-o"></i> Create</a>
-              <a class="dropdown-item" href="{{ url_for('search_employee') }}"><i class="fa fa-search"></i> Search</a>
+              <a class="dropdown-item" href="{{ url_for('create_employee') }}"><i class="fa fa-pencil-square-o" id="icon"></i> Create</a>
+              <a class="dropdown-item" href="{{ url_for('search_employee') }}"><i class="fa fa-search" id="icon"></i> Search</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}"><i class="fa fa-sign-out"></i> Logout</a>
+            <a class="nav-link" href="{{ url_for('logout') }}" id="l_out"><i class="fa fa-sign-out" id="icon"></i> Logout</a>
           </li>
         </ul>
       </div>
