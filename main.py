@@ -7,14 +7,18 @@ from wtforms.widgets import CheckboxInput, ListWidget
 from wtforms.validators import DataRequired, Length
 from sqlalchemy import or_, func
 import psycopg2
+from os import environ
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my-secret-key'
 
-username = "postgres"
-password = "priyajoice"
-dbname = "employee_db"
-app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{username}:{password}@localhost:5432/{dbname}"
+load_dotenv()
+username = environ['DB_USER']
+password = environ['DB_PASSWORD']
+dbname = environ['DB_NAME']
+
+app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{username}:{password}@db/{dbname}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
